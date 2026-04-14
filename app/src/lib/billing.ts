@@ -26,6 +26,10 @@ export async function createCheckoutSession(
   _successUrl: string,
   _cancelUrl: string
 ): Promise<CheckoutSessionResult> {
+  void _workspaceId
+  void _priceId
+  void _successUrl
+  void _cancelUrl
   throw new NotImplementedError('createCheckoutSession')
 }
 
@@ -34,6 +38,8 @@ export async function createCheckoutSession(
  * Updates workspace plan_tier and subscription rows based on event type.
  */
 export async function handleWebhook(_rawBody: string, _signature: string): Promise<void> {
+  void _rawBody
+  void _signature
   throw new NotImplementedError('handleWebhook')
 }
 
@@ -41,5 +47,6 @@ export async function handleWebhook(_rawBody: string, _signature: string): Promi
  * Cancel an active subscription for a workspace.
  */
 export async function cancelSubscription(_workspaceId: string): Promise<void> {
+  void _workspaceId
   throw new NotImplementedError('cancelSubscription')
 }
