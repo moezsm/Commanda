@@ -4,6 +4,27 @@
 
 Commanda is a simple, mobile-first SaaS application that helps social media sellers manage orders, track deliveries, and organize customers — all in one place. Built specifically for Facebook and Instagram sellers.
 
+## Project Summary
+
+Commanda is planned as a freemium SaaS for small and micro sellers who receive orders through social media and need a simple way to record and follow each order from confirmation to delivery.
+
+The MVP focuses on one critical workflow: after receiving an order, the seller opens Commanda on mobile and saves the order with the product, client information, delivery company, and delivery details. Each seller has a fully separate workspace for orders, clients, and delivery records.
+
+The launch market is Tunisia, where affordability, mobile usage, and operational simplicity are essential. The long-term expansion path is France and selected African markets, which means the product should be designed from the start for localization, multi-courier workflows, and country-specific premium modules. Premium features will be introduced gradually, with e-invoicing intentionally postponed to a later stage.
+
+## Planning Documents
+
+- [product-study.md](product-study.md) - professional project study, business model, feature scope, and architecture direction.
+- [task-breakdown.md](task-breakdown.md) - phased delivery plan with priorities, dependencies, and scale milestones.
+- [pricing-model.md](pricing-model.md) - freemium structure, proposed limits, and monetization path.
+- [mobile-user-flows.md](mobile-user-flows.md) - wireframe-ready user journeys for the mobile MVP.
+- [data-model-plan.md](data-model-plan.md) - high-level schema, tenant isolation, and archive strategy.
+- [study-summary.excalidraw](study-summary.excalidraw) - visual one-page summary of the full product and architecture study.
+- [feature-design.md](feature-design.md) - detailed feature blueprint with MVP slices and premium expansion.
+- [technology-selection.md](technology-selection.md) - final technology choices and cost-aware architecture decisions.
+- [implementation-summary.md](implementation-summary.md) - one-page executive handoff summary for implementation.
+- [tasks/README.md](tasks/README.md) - iterative implementation backlog for implement agents.
+
 ---
 
 ## 🎯 Who Is Commanda For?
