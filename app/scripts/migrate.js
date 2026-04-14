@@ -2,29 +2,33 @@
 /**
  * Auto-migration runner — executed by Vercel before `next build`.
  *
- * Connects to Supabase Postgres using DATABASE_URL, creates a
+ * Connects to Supabase Postgres using MIGRATION_DATABASE_URL (preferred)
+ * or DATABASE_URL, creates a
  * _migrations tracking table, then runs every *.sql file under
  * ../supabase/migrations in filename order — skipping any file that
  * was already applied.
  *
- * Required env var:
- *   DATABASE_URL  — Supabase direct (non-pooler) connection string
- *                   postgresql://postgres:[password]@db.[ref].supabase.co:5432/postgres
+ * Required env vars:
+ *   MIGRATION_DATABASE_URL (recommended) or DATABASE_URL
  */
 
 'use strict';
 
 const { Client } = require('pg');
+const dns = require('dns');
 const fs = require('fs');
 const path = require('path');
 
 const MIGRATIONS_DIR = path.resolve(__dirname, '..', '..', 'supabase', 'migrations');
 
 async function main() {
-  const databaseUrl = process.env.DATABASE_URL;
+  // Prefer IPv4 in platforms where IPv6 egress is unavailable (common in CI/build runtimes).
+  dns.setDefaultResultOrder('ipv4first');
+
+  const databaseUrl = process.env.MIGRATION_DATABASE_URL || process.env.DATABASE_URL;
 
   if (!databaseUrl) {
-    console.error('[migrate] ERROR: DATABASE_URL env var is not set.');
+    console.error('[migrate] ERROR: MIGRATION_DATABASE_URL (or DATABASE_URL) env var is not set.');
     process.exit(1);
   }
 
@@ -87,5 +91,10 @@ async function main() {
 
 main().catch((err) => {
   console.error('[migrate] Unexpected error:', err.message);
+  if (String(err.message).includes('ENETUNREACH')) {
+    console.error(
+      '[migrate] Hint: set MIGRATION_DATABASE_URL to an IPv4-reachable Supabase Postgres URL (Session Pooler URI is usually IPv4-safe).',
+    );
+  }
   process.exit(1);
 });
