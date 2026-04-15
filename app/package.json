@@ -5,6 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "migrate": "node scripts/migrate.js",
+    "supabase:local:start": "npx supabase start --workdir ..",
+    "supabase:local:env": "node scripts/local-supabase-env.js",
+    "supabase:local:stop": "npx supabase stop --workdir ..",
+    "local:up": "npm run supabase:local:start && npm run supabase:local:env",
     "build": "node scripts/migrate.js && next build",
     "start": "next start",
     "lint": "next lint"
