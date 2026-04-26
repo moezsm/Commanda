@@ -56,7 +56,7 @@ function main() {
     '# Auto-generated from local Supabase status',
     '# Run: npm run supabase:local:env',
     `NEXT_PUBLIC_SUPABASE_URL=${vars.API_URL}`,
-    'NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=',
+    `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=${vars.ANON_KEY}`,
     `NEXT_PUBLIC_SUPABASE_ANON_KEY=${vars.ANON_KEY}`,
     `SUPABASE_SERVICE_ROLE_KEY=${vars.SERVICE_ROLE_KEY}`,
     `DATABASE_URL=${vars.DB_URL}`,
