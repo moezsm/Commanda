@@ -5,6 +5,32 @@
 1. Go to [supabase.com](https://supabase.com) and create a new project.
 2. Wait for provisioning (~2 min).
 
+## Local Debug Mode (Local DB + Local Auth)
+
+If you want local debugging without hitting hosted Supabase, use Supabase local stack.
+
+Prerequisites:
+1. Docker Desktop installed and running.
+2. Node.js installed.
+
+From `app/` run:
+
+```
+npm run local:up
+npm run dev
+```
+
+What this does:
+1. Starts local Supabase containers (`supabase:local:start`).
+2. Generates `app/.env.local` from local Supabase runtime values (`supabase:local:env`).
+3. Runs Next.js against local services.
+
+Stop local stack when done:
+
+```
+npm run supabase:local:stop
+```
+
 ## 2. Configure Environment Variables
 
 Copy `.env.local.example` to `.env.local` in the `app/` folder and fill in:
